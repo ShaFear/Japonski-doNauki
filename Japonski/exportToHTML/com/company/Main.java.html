@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: rgb(0,0,0); font-weight: normal; font-style: normal; }
+.s0 { color: rgb(204,120,50); }
+.s1 { color: rgb(169,183,198); }
+.s2 { color: rgb(106,135,89); }
+.s3 { color: rgb(104,151,187); }
+</style>
+</head>
+<BODY BGCOLOR="#2b2b2b">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Main.java</FONT>
+</center></TD></TR></TABLE>
+<pre>
+
+<span class="s0">package </span><span class="s1">com.company</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">import </span><span class="s1">java.io.*</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.math.*</span><span class="s0">;</span><span class="s1"> 
+</span><span class="s0">import </span><span class="s1">java.util.Random</span><span class="s0">;</span><span class="s1"> 
+ 
+</span><span class="s0">public class </span><span class="s1">Main { 
+ 
+    </span><span class="s0">public static void </span><span class="s1">main(String[] args) { 
+        File f = </span><span class="s0">new </span><span class="s1">File(</span><span class="s2">&quot;znaczki.txt&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        String s</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">try </span><span class="s1">{ 
+            BufferedReader br = </span><span class="s0">new </span><span class="s1">BufferedReader(</span><span class="s0">new </span><span class="s1">InputStreamReader(</span><span class="s0">new </span><span class="s1">FileInputStream(f)))</span><span class="s0">;</span><span class="s1"> 
+            s = br.readLine()</span><span class="s0">;</span><span class="s1"> 
+        } 
+        </span><span class="s0">catch </span><span class="s1">(Exception e){ 
+            System.err.print(e.toString())</span><span class="s0">;</span><span class="s1"> 
+            </span><span class="s0">return;</span><span class="s1"> 
+        } 
+        String t[] = s.split(</span><span class="s2">&quot; &quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">int</span><span class="s1">[] poziom = {</span><span class="s3">8</span><span class="s0">, </span><span class="s3">16</span><span class="s0">, </span><span class="s3">24</span><span class="s0">, </span><span class="s3">32</span><span class="s0">, </span><span class="s3">40</span><span class="s0">, </span><span class="s3">48</span><span class="s0">, </span><span class="s3">53</span><span class="s0">, </span><span class="s3">62</span><span class="s0">, </span><span class="s3">70</span><span class="s0">, </span><span class="s3">78</span><span class="s0">, </span><span class="s3">86</span><span class="s0">, </span><span class="s3">94</span><span class="s0">, </span><span class="s3">102</span><span class="s0">, </span><span class="s3">104</span><span class="s1">}</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">int </span><span class="s1">p = </span><span class="s3">13</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">try</span><span class="s1">{ 
+            p = Integer.parseInt(args[</span><span class="s3">0</span><span class="s1">]) - </span><span class="s3">1</span><span class="s0">;</span><span class="s1"> 
+        } 
+        </span><span class="s0">catch </span><span class="s1">(Exception e){ 
+        } 
+ 
+        </span><span class="s0">int </span><span class="s1">w = (</span><span class="s0">int</span><span class="s1">)Math.sqrt(poziom[p])</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">int </span><span class="s1">l = </span><span class="s3">1</span><span class="s0">;</span><span class="s1"> 
+ 
+        System.out.print(</span><span class="s2">&quot;</span><span class="s0">\t</span><span class="s2">&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">j=</span><span class="s3">1</span><span class="s0">; </span><span class="s1">j&lt;=w</span><span class="s0">; </span><span class="s1">j++){ 
+            System.out.print(j + </span><span class="s2">&quot;</span><span class="s0">\t</span><span class="s2">&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+        } 
+        System.out.println()</span><span class="s0">;</span><span class="s1"> 
+        </span><span class="s0">char </span><span class="s1">A = </span><span class="s2">'A'</span><span class="s0">;</span><span class="s1"> 
+ 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s0">; </span><span class="s1">j&lt;(t.length*</span><span class="s3">2</span><span class="s1">)</span><span class="s0">; </span><span class="s1">j++){ 
+            Random r = </span><span class="s0">new </span><span class="s1">Random()</span><span class="s0">;</span><span class="s1"> 
+            </span><span class="s0">int </span><span class="s1">n = r.nextInt(poziom[p])</span><span class="s0">;</span><span class="s1"> 
+            </span><span class="s0">int </span><span class="s1">m = r.nextInt(poziom[p])</span><span class="s0">;</span><span class="s1"> 
+            String tmp = t[n]</span><span class="s0">;</span><span class="s1"> 
+            t[n] = t[m]</span><span class="s0">;</span><span class="s1"> 
+            t[m] = tmp</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+        </span><span class="s0">for</span><span class="s1">(</span><span class="s0">int </span><span class="s1">j=</span><span class="s3">0</span><span class="s0">; </span><span class="s1">j&lt;poziom[p]</span><span class="s0">; </span><span class="s1">j++){ 
+            </span><span class="s0">if</span><span class="s1">((l-</span><span class="s3">1</span><span class="s1">)%w == </span><span class="s3">0</span><span class="s1">) { 
+                System.out.print(A + </span><span class="s2">&quot;</span><span class="s0">\t</span><span class="s2">&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+                A++</span><span class="s0">;</span><span class="s1"> 
+            } 
+            System.out.print(t[j] + </span><span class="s2">&quot;</span><span class="s0">\t</span><span class="s2">&quot;</span><span class="s1">)</span><span class="s0">;</span><span class="s1"> 
+            </span><span class="s0">if</span><span class="s1">(l%w == </span><span class="s3">0</span><span class="s1">) { 
+                System.out.println()</span><span class="s0">;</span><span class="s1"> 
+            } 
+            l++</span><span class="s0">;</span><span class="s1"> 
+        } 
+ 
+    } 
+} 
+</span></pre>
+</body>
+</html>

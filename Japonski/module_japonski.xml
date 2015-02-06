@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_japonski" default="compile.module.japonski">
+  <dirname property="module.japonski.basedir" file="${ant.file.module_japonski}"/>
+  
+  <property name="module.jdk.home.japonski" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.japonski" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.japonski" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.japonski" value="-encoding UTF-8 -source 1.6 ${compiler.args}"/>
+  
+  <property name="japonski.output.dir" value="${module.japonski.basedir}/out/production/Japonski"/>
+  <property name="japonski.testoutput.dir" value="${module.japonski.basedir}/out/test/Japonski"/>
+  
+  <path id="japonski.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="japonski.module.production.classpath">
+    <path refid="${module.jdk.classpath.japonski}"/>
+  </path>
+  
+  <path id="japonski.runtime.production.module.classpath">
+    <pathelement location="${japonski.output.dir}"/>
+  </path>
+  
+  <path id="japonski.module.classpath">
+    <path refid="${module.jdk.classpath.japonski}"/>
+    <pathelement location="${japonski.output.dir}"/>
+  </path>
+  
+  <path id="japonski.runtime.module.classpath">
+    <pathelement location="${japonski.testoutput.dir}"/>
+    <pathelement location="${japonski.output.dir}"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.japonski">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.japonski">
+    <patternset refid="excluded.from.module.japonski"/>
+  </patternset>
+  
+  <path id="japonski.module.sourcepath">
+    <dirset dir="${module.japonski.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.japonski" depends="compile.module.japonski.production,compile.module.japonski.tests" description="Compile module Japonski"/>
+  
+  <target name="compile.module.japonski.production" depends="register.custom.compilers" description="Compile module Japonski; production classes">
+    <mkdir dir="${japonski.output.dir}"/>
+    <javac2 destdir="${japonski.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.japonski}/javac">
+      <compilerarg line="${compiler.args.japonski}"/>
+      <bootclasspath refid="japonski.module.bootclasspath"/>
+      <classpath refid="japonski.module.production.classpath"/>
+      <src refid="japonski.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.japonski"/>
+    </javac2>
+    
+    <copy todir="${japonski.output.dir}">
+      <fileset dir="${module.japonski.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.japonski.tests" depends="register.custom.compilers,compile.module.japonski.production" description="compile module Japonski; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.japonski" description="cleanup module">
+    <delete dir="${japonski.output.dir}"/>
+    <delete dir="${japonski.testoutput.dir}"/>
+  </target>
+</project>
