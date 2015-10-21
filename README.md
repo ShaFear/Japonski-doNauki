@@ -2,7 +2,7 @@
 
 Wsparcie w procesie nauki, losuje zestaw wyrażeń.
 
-• GitHub: <a href="http://github.com/Japonski-doNauki">Losowanie wyrażeń - Japoński</a>
+• GitHub: <a href="http://github.com/trzye/Japonski-doNauki">Losowanie wyrażeń - Japoński</a>
 
 • Użyte technologie: <b>Java SE</b>
 
